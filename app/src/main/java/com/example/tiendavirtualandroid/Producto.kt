@@ -1,8 +1,11 @@
 package com.example.tiendavirtualandroid
 
 data class Producto(
-    val imagen: Int, // ID del recurso drawable
+    val id: String,
     val titulo: String,
+    val precio: Int,
     val descripcion: String,
-    val precio: Double
+    val marca: String,
+    val imagenUrl: String,
+    val unidades: Int
 )
