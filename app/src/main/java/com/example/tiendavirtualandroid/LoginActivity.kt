@@ -12,8 +12,15 @@ class LoginActivity : AppCompatActivity() {
 
         val btnCrearCuenta = findViewById<Button>(R.id.btnCrearCuenta)
 
+        val btnLogin = findViewById<Button>(R.id.loginButton)
+
         btnCrearCuenta.setOnClickListener {
             val intent = Intent(this,RegistrarActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnLogin.setOnClickListener {
+            val intent = Intent(this,ProductListActivity::class.java)
             startActivity(intent)
         }
     }
