@@ -9,7 +9,7 @@ class ProductoProvider {
                 1285166,
                 "Computador Portatil HP Pavilion Intel Core i5 1235U RAM 8 GB 512 GB SSD 15eg2519la",
                 "HP",
-                "https://exitocol.vtexassets.com/arquivos/ids/21481862/Computador-Portatil-HP-Pavilion-Intel-Core-i5-1235U-RAM-8-GB-512-GB-SSD-15-eg2519la-3488673_a.jpg?v=638430217287700000",
+                "https://exitocol.vtexassets.com/arquivos/ids/22179288/Computador-Portatil-HP-Pavilion-Intel-Core-i5-1235U-8-GB-512-GB-SSD-14-dv2006la-3290143_a.jpg?v=638466515880130000",
                 8
             ),
             Producto(
