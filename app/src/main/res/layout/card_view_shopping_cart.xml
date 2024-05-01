@@ -46,11 +46,15 @@
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#DA1C1C"
+                app:backgroundTint="@android:color/white"
+                app:strokeColor="#DA1C1C"
+                app:strokeWidth="2dp"
                 app:cornerRadius="50dp"
                 android:text="Eliminar"
+                android:textColor="#DA1C1C"
                 android:layout_marginTop="20dp"
-                app:icon="@drawable/baseline_delete" />
+                app:icon="@drawable/baseline_delete"
+                app:iconTint="#DA1C1C" />
         </LinearLayout>
 
     </LinearLayout>

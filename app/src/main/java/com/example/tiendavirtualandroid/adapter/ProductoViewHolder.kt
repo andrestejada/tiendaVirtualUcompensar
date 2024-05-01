@@ -24,7 +24,7 @@ class ProductoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val format = NumberFormat.getCurrencyInstance()
         format.setMaximumFractionDigits(0);
         precio.text = "Precio: ${format.format(producto.precio)}"
-        unidades.text = "Unidades: ${producto.unidades.toString()}"
+        unidades.text = "Unidades Disponibles: ${producto.unidades.toString()}"
         marca.text = "Marca: ${producto.marca}"
     }
 }
