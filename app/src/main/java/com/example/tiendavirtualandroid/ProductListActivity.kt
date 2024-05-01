@@ -20,7 +20,6 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 
 class ProductListActivity : AppCompatActivity() {
-    val database = Firebase.database
     val myRef = FirebaseDatabase.getInstance().getReference("productos")
     private var productArrayList = ArrayList<Producto>()
 
@@ -55,9 +54,13 @@ class ProductListActivity : AppCompatActivity() {
                         val item = productSnapshot.getValue(Producto::class.java)
 
                         productArrayList.add(item!!)
+
                     }
 
                 }
+                // Notifica al adaptador que los datos han cambiado
+                val recicyleView = findViewById<RecyclerView>(R.id.product_card_layout)
+                (recicyleView.adapter as? ProductAdapter)?.notifyDataSetChanged()
 
             }
 
