@@ -66,14 +66,18 @@ class RegistrarActivity : AppCompatActivity() {
 
     private fun registerUser() {
         val user = User(password.text.toString(), email.text.toString(), name.text.toString())
-
+        // Verificar si el email o la contraseña están vacíos
+        if (user.email?.isEmpty()!! || user.password?.isEmpty()!!) {
+            Toast.makeText(this, "Email and password cannot be empty.", Toast.LENGTH_SHORT).show()
+            return
+        }
         auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("RegistrarActivity", "createUserWithEmail:success")
                     val firebaseUser = auth.currentUser
-                    this.createUserInDatabase(userId = firebaseUser?.uid!! , user = user )
+                    this.createUserInDatabase(userId = firebaseUser?.uid!!, user = user)
                     //updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
