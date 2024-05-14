@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:hint="Email de usuario"
         android:inputType="textEmailAddress"
+        android:text="andres.tejada@gmail.com"
         android:maxLines="1" />
 
     <EditText
@@ -37,6 +38,7 @@
         android:layout_marginTop="10dp"
         android:hint="Contraseña"
         android:inputType="textPassword"
+        android:text="password"
         android:maxLines="1" />
 
     <Button

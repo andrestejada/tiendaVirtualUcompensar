@@ -1,7 +1,7 @@
 package com.example.tiendavirtualandroid
 
 data class Producto(
-    val id: String? = null,
+    var id: String? = null,
     val titulo: String?=null,
     val precio: Int? = null,
     val descripcion: String? = null,

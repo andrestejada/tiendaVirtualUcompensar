@@ -10,15 +10,30 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.tiendavirtualandroid.Producto
 import com.example.tiendavirtualandroid.R
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.database
 import java.text.NumberFormat
 import java.util.Locale
-class ShoppingCartViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+class ShoppingCartViewHolder(view: View) :
+    RecyclerView.ViewHolder(view) {
+    private lateinit var database: DatabaseReference
+
     val name = view.findViewById<TextView>(R.id.shopping_title)
     val unidades = view.findViewById<TextView>(R.id.shopping__quantity)
     val image = view.findViewById<ImageView>(R.id.shopping_image)
-    fun render(producto: Producto){
+    val btnDelte = view.findViewById<Button>(R.id.btnDeleteItem)
+    fun render(producto: Producto, user: FirebaseUser) {
+
         name.text = producto.titulo;
         Glide.with(image.context).load(producto.imagenUrl).into(image)
         unidades.text = "Unidades: ${producto.unidades.toString()}"
+        btnDelte.setOnClickListener {
+            database = Firebase.database.reference
+            database.child("shoppingCart").child(user.uid).child(producto.id!!).removeValue()
+        }
     }
 }

@@ -23,9 +23,7 @@ class ProductListActivity : AppCompatActivity() {
     val myRef = FirebaseDatabase.getInstance().getReference("productos")
     private var productArrayList = ArrayList<Producto>()
 
-    private lateinit var database: DatabaseReference
 
-    // ...
     private lateinit var auth: FirebaseAuth
 
 
