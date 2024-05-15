@@ -3,10 +3,8 @@ package com.example.tiendavirtualandroid
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tiendavirtualandroid.adapter.ProductAdapter
 import com.example.tiendavirtualandroid.adapter.ShoppingCartAdapter
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -22,7 +20,7 @@ class ShoppingCartActivity : AppCompatActivity() {
     private var database: DatabaseReference = Firebase.database.reference
     private var productArrayList = ArrayList<Producto>()
     private lateinit var auth: FirebaseAuth
-
+    private lateinit var recicyleView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,13 +29,19 @@ class ShoppingCartActivity : AppCompatActivity() {
         initRecicleView()
     }
 
+    private fun onDeleteItem(position: Int) {
+        productArrayList.removeAt(position)
+        recicyleView.adapter?.notifyItemRemoved(position)
+    }
+
     fun initRecicleView() {
         val currentUser = auth.currentUser
-        val recicyleView = findViewById<RecyclerView>(R.id.shopping_cart_recycle)
+        recicyleView = findViewById<RecyclerView>(R.id.shopping_cart_recycle)
         recicyleView.layoutManager = LinearLayoutManager(this)
         database.child("shoppingCart").child(currentUser?.uid!!)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    productArrayList.clear()
                     for (productSnapshot in dataSnapshot.children) {
                         if (productSnapshot.exists()) {
                             var item = productSnapshot.getValue(Producto::class.java)
@@ -49,8 +53,11 @@ class ShoppingCartActivity : AppCompatActivity() {
                         }
 
                     }
-                    recicyleView.adapter = ShoppingCartAdapter(productArrayList, currentUser!!)
-                    (recicyleView.adapter as? ProductAdapter)?.notifyDataSetChanged()
+                    recicyleView.adapter =
+                        ShoppingCartAdapter(
+                            productArrayList,
+                            currentUser!!,
+                            onClickDelete = { position -> onDeleteItem(position) })
                 }
 
                 override fun onCancelled(error: DatabaseError) {

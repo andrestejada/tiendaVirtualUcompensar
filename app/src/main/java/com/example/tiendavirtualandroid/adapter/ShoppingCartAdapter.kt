@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tiendavirtualandroid.Producto
 import com.example.tiendavirtualandroid.R
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 class ShoppingCartAdapter(
     private val productosList: List<Producto>,
-    private val user: FirebaseUser
+    private val user: FirebaseUser,
+    private val onClickDelete: (Int) -> Unit
 ) :
     RecyclerView.Adapter<ShoppingCartViewHolder>() {
 
@@ -32,7 +32,7 @@ class ShoppingCartAdapter(
 
     override fun onBindViewHolder(holder: ShoppingCartViewHolder, position: Int) {
         val item = productosList[position]
-        holder.render(item, user)
+        holder.render(item, user, onClickDelete)
     }
 
 
