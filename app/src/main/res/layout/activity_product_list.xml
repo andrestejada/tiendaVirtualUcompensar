@@ -9,9 +9,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Listado De Productos"
         android:textAlignment="center"
-        android:layout_marginTop="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -20,6 +20,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:padding="10dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="80dp"
+        app:backgroundTint="@color/teal_700"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/baseline_my_location" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_cart"

@@ -1,6 +1,7 @@
 package com.example.tiendavirtualandroid
 
 import ProductoProvider
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -37,9 +38,15 @@ class ProductListActivity : AppCompatActivity() {
 
         // Initialize Firebase Auth
         auth = Firebase.auth
+        val floatingBtnLocation = findViewById<FloatingActionButton>(R.id.fab_location)
         val floatingBtn = findViewById<FloatingActionButton>(R.id.fab_cart)
+
         floatingBtn.setOnClickListener {
             val intent = Intent(this, ShoppingCartActivity::class.java)
+            startActivity(intent)
+        }
+        floatingBtnLocation.setOnClickListener {
+            val intent = Intent(this, LocationActivity::class.java)
             startActivity(intent)
         }
         getProductos()

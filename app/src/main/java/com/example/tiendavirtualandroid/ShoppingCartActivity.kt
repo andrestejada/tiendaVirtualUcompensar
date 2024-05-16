@@ -3,6 +3,8 @@ package com.example.tiendavirtualandroid
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tiendavirtualandroid.adapter.ShoppingCartAdapter
@@ -14,7 +16,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
-import com.google.firebase.database.getValue
 
 class ShoppingCartActivity : AppCompatActivity() {
     private var database: DatabaseReference = Firebase.database.reference
@@ -37,6 +38,8 @@ class ShoppingCartActivity : AppCompatActivity() {
     fun initRecicleView() {
         val currentUser = auth.currentUser
         recicyleView = findViewById<RecyclerView>(R.id.shopping_cart_recycle)
+        val emptyCartMessage = findViewById<TextView>(R.id.empty_cart_message)
+
         recicyleView.layoutManager = LinearLayoutManager(this)
         database.child("shoppingCart").child(currentUser?.uid!!)
             .addValueEventListener(object : ValueEventListener {
@@ -44,27 +47,30 @@ class ShoppingCartActivity : AppCompatActivity() {
                     productArrayList.clear()
                     for (productSnapshot in dataSnapshot.children) {
                         if (productSnapshot.exists()) {
-                            var item = productSnapshot.getValue(Producto::class.java)
-
-                            Log.w("ShoppingCartActivity", productSnapshot?.key!!)
-                            item?.id = productSnapshot?.key!!
+                            val item = productSnapshot.getValue(Producto::class.java)
+                            item?.id = productSnapshot.key!!
                             productArrayList.add(item!!)
-
                         }
-
                     }
-                    recicyleView.adapter =
-                        ShoppingCartAdapter(
-                            productArrayList,
-                            currentUser!!,
-                            onClickDelete = { position -> onDeleteItem(position) })
+                    recicyleView.adapter = ShoppingCartAdapter(
+                        productArrayList,
+                        currentUser!!,
+                        onClickDelete = { position -> onDeleteItem(position) }
+                    )
+
+                    // Actualizar la visibilidad basada en si la lista está vacía o no
+                    if (productArrayList.isEmpty()) {
+                        emptyCartMessage.visibility = View.VISIBLE
+                        recicyleView.visibility = View.GONE
+                    } else {
+                        emptyCartMessage.visibility = View.GONE
+                        recicyleView.visibility = View.VISIBLE
+                    }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    // Failed to read value
                     Log.w("TAG", "Failed to read value.", error.toException())
                 }
             })
-
     }
 }
