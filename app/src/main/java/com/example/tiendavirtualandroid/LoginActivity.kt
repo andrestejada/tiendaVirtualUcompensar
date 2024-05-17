@@ -74,7 +74,6 @@ class LoginActivity : AppCompatActivity() {
                         "Authentication failed.",
                         Toast.LENGTH_SHORT,
                     ).show()
-                    //updateUI(null)
                 }
             }
 

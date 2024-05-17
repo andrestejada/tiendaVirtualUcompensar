@@ -22,8 +22,8 @@
             android:id="@+id/product_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Título del Producto"
             android:layout_marginTop="10dp"
+            android:text="Título del Producto"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
         <TextView
@@ -43,13 +43,6 @@
             android:text="$0.00"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-        <TextView
-            android:id="@+id/product_unit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Unidades: 8"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
         <TextView
             android:id="@+id/product_brand"

@@ -18,14 +18,12 @@ class ShoppingCartViewHolder(view: View) :
     private lateinit var database: DatabaseReference
 
     val name = view.findViewById<TextView>(R.id.shopping_title)
-    val unidades = view.findViewById<TextView>(R.id.shopping__quantity)
     val image = view.findViewById<ImageView>(R.id.shopping_image)
     val btnDelte = view.findViewById<Button>(R.id.btnDeleteItem)
     fun render(producto: Producto, user: FirebaseUser, onClickDelete: (Int) -> Unit) {
 
         name.text = producto.titulo;
         Glide.with(image.context).load(producto.imagenUrl).into(image)
-        unidades.text = "Unidades: ${producto.unidades.toString()}"
         btnDelte.setOnClickListener {
             database = Firebase.database.reference
             database.child("shoppingCart").child(user.uid).child(producto.id!!).removeValue()

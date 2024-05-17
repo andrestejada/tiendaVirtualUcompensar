@@ -27,13 +27,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nombre de usuario"
-        android:text="andres.tejada"
         android:inputType="textEmailAddress"
         android:maxLines="1" />
 
     <EditText
         android:id="@+id/email"
-        android:text="andres.tejada@gmail.com"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email de usuario"
@@ -47,7 +45,6 @@
         android:layout_marginTop="10dp"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        android:text="password"
         android:maxLines="1" />
 
     <!-- Botón para iniciar sesión -->

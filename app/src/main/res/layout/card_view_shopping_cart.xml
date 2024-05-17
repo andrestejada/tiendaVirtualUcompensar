@@ -35,27 +35,20 @@
                 android:text="Título del Producto"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-            <TextView
-                android:id="@+id/shopping__quantity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Cantidad: X"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
                 android:id="@+id/btnDeleteItem"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:backgroundTint="@android:color/white"
-                app:strokeColor="#DA1C1C"
-                app:strokeWidth="2dp"
-                app:cornerRadius="50dp"
+                android:layout_marginTop="20dp"
                 android:text="Eliminar"
                 android:textColor="#DA1C1C"
-                android:layout_marginTop="20dp"
+                app:backgroundTint="@android:color/white"
+                app:cornerRadius="50dp"
                 app:icon="@drawable/baseline_delete"
-                app:iconTint="#DA1C1C" />
+                app:iconTint="#DA1C1C"
+                app:strokeColor="#DA1C1C"
+                app:strokeWidth="2dp" />
         </LinearLayout>
 
     </LinearLayout>

@@ -25,7 +25,6 @@ class ProductoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val description = view.findViewById<TextView>(R.id.product_description)
     val image = view.findViewById<ImageView>(R.id.product_image)
     val precio = view.findViewById<TextView>(R.id.product_price)
-    val unidades = view.findViewById<TextView>(R.id.product_unit)
     val marca = view.findViewById<TextView>(R.id.product_brand)
     val btnAddCart = view.findViewById<Button>(R.id.add_product_button)
     private lateinit var database: DatabaseReference
@@ -38,7 +37,6 @@ class ProductoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val format = NumberFormat.getCurrencyInstance()
         format.setMaximumFractionDigits(0);
         precio.text = "Precio: ${format.format(producto.precio)}"
-        unidades.text = "Unidades Disponibles: ${producto.unidades.toString()}"
         marca.text = "Marca: ${producto.marca}"
 
         btnAddCart.setOnClickListener {
