@@ -27,7 +27,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nombre de usuario"
+        android:layout_marginTop="15dp"
         android:inputType="text"
+        android:text="andres"
         android:maxLines="1" />
 
     <EditText
@@ -35,15 +37,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email de usuario"
+        android:layout_marginTop="15dp"
         android:inputType="textEmailAddress"
+        android:text="andres.tejada@gmail.com"
         android:maxLines="1" />
 
     <EditText
         android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:hint="Telefono"
+        android:text="3165327601"
         android:inputType="phone"
         android:maxLines="1" />
 
@@ -51,21 +56,22 @@
         android:id="@+id/city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:hint="Ciudad"
         android:inputType="text"
+        android:text="cali"
         android:maxLines="1" />
 
     <EditText
         android:id="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:hint="Direccion"
         android:inputType="text"
+        android:text="carrera 1c # 57"
         android:maxLines="1" />
 
-    <!-- Botón para iniciar sesión -->
     <Button
         android:id="@+id/btnConfirmDelivery"
         android:layout_width="wrap_content"

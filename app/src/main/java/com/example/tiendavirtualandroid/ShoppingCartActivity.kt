@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tiendavirtualandroid.adapter.ShoppingCartAdapter
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -24,7 +25,7 @@ class ShoppingCartActivity : AppCompatActivity() {
     private var productArrayList = ArrayList<Producto>()
     private lateinit var auth: FirebaseAuth
     private lateinit var recicyleView: RecyclerView
-    private lateinit var btnConfirmPayment: Button
+    private lateinit var btnConfirmPayment: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +33,14 @@ class ShoppingCartActivity : AppCompatActivity() {
         setContentView(R.layout.activity_shopping_cart)
         initRecicleView()
 
+
+        btnConfirmPayment = findViewById(R.id.btnPaymentConfirm)
+
         btnConfirmPayment.setOnClickListener {
+
             val intent = Intent(this, ConfirmUserInfoActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
