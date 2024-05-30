@@ -22,7 +22,7 @@ class ConfirmUserInfoActivity : AppCompatActivity() {
     private lateinit var btnConfirmPurchase: Button
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
-
+    private lateinit var productList: ArrayList<Producto>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +38,7 @@ class ConfirmUserInfoActivity : AppCompatActivity() {
         address = findViewById(R.id.address)
         city = findViewById(R.id.city)
         btnConfirmPurchase = findViewById(R.id.btnConfirmDelivery)
-
+        productList = intent.getSerializableExtra("productArrayList") as ArrayList<Producto>
         btnConfirmPurchase.setOnClickListener {
 
             val name = name.text.toString()
@@ -69,6 +69,21 @@ class ConfirmUserInfoActivity : AppCompatActivity() {
 
                     }
                 }
+
+            database.child("deliveryInformation").child(currentUser?.uid!!).child("products")
+                .setValue(productList)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Pedido realizado", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this, PurchaseCompleateActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "E", Toast.LENGTH_LONG).show()
+
+                    }
+                }
+            database.child("shoppingCart").child(currentUser?.uid!!).removeValue()
         }
     }
 }

@@ -39,6 +39,7 @@ class ShoppingCartActivity : AppCompatActivity() {
         btnConfirmPayment.setOnClickListener {
 
             val intent = Intent(this, ConfirmUserInfoActivity::class.java)
+            intent.putExtra("productArrayList", productArrayList)
             startActivity(intent)
             finish()
         }
@@ -76,9 +77,11 @@ class ShoppingCartActivity : AppCompatActivity() {
                     if (productArrayList.isEmpty()) {
                         emptyCartMessage.visibility = View.VISIBLE
                         recicyleView.visibility = View.GONE
+                        btnConfirmPayment.visibility = View.GONE
                     } else {
                         emptyCartMessage.visibility = View.GONE
                         recicyleView.visibility = View.VISIBLE
+                        btnConfirmPayment.visibility = View.VISIBLE
                     }
                 }
 

@@ -29,7 +29,6 @@
         android:hint="Nombre de usuario"
         android:layout_marginTop="15dp"
         android:inputType="text"
-        android:text="andres"
         android:maxLines="1" />
 
     <EditText
@@ -39,7 +38,6 @@
         android:hint="Email de usuario"
         android:layout_marginTop="15dp"
         android:inputType="textEmailAddress"
-        android:text="andres.tejada@gmail.com"
         android:maxLines="1" />
 
     <EditText
@@ -48,7 +46,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="Telefono"
-        android:text="3165327601"
         android:inputType="phone"
         android:maxLines="1" />
 
@@ -59,7 +56,6 @@
         android:layout_marginTop="15dp"
         android:hint="Ciudad"
         android:inputType="text"
-        android:text="cali"
         android:maxLines="1" />
 
     <EditText
@@ -69,7 +65,6 @@
         android:layout_marginTop="15dp"
         android:hint="Direccion"
         android:inputType="text"
-        android:text="carrera 1c # 57"
         android:maxLines="1" />
 
     <Button
